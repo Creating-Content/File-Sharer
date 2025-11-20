@@ -1,0 +1,19 @@
+spring.application.name=fileSharer
+server.port=8080
+
+# Database Configuration
+spring.datasource.url=jdbc:postgresql://localhost:5432/filesharerdb?currentSchema=public
+spring.datasource.username=YOUR_DB_USERNAME
+spring.datasource.password=YOUR_DB_PASSWORD
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.open-in-view=false
+
+# AWS S3 Configuration
+cloud.aws.credentials.access-key=YOUR_AWS_ACCESS_KEY
+cloud.aws.credentials.secret-key=YOUR_AWS_SECRET_KEY
+cloud.aws.region.static=ap-south-1
+cloud.aws.stack.auto=false
+app.aws.s3.bucket-name=YOUR_S3_BUCKET_NAME
