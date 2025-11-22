@@ -19,6 +19,9 @@ export default function FileUpload({ onFileUpload, isUploading }: FileUploadProp
     if (files && files.length > 0) {
       const file = files[0];
       setSelectedFile(file);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     }
   };
 
@@ -57,20 +60,19 @@ export default function FileUpload({ onFileUpload, isUploading }: FileUploadProp
   return (
     <div className="space-y-6">
       <div 
-        className={`p-8 border-2 border-dashed rounded-lg transition-colors cursor-pointer 
+        className={`p-8 border-2 border-dashed rounded-lg transition-colors 
           ${dragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-blue-400'}`
         }
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
         onDrop={handleDrop}
-        onClick={() => fileInputRef.current?.click()}
       >
         <input
           ref={fileInputRef}
           type="file"
           aria-label="file-input"
-          className="hidden"
+          style={{ display: 'none' }}
           onChange={(e: ChangeEvent<HTMLInputElement>) => handleFileChange(e.target.files)}
           disabled={isUploading}
         />
@@ -93,9 +95,12 @@ export default function FileUpload({ onFileUpload, isUploading }: FileUploadProp
             </div>
         ) : (
             <div className="flex flex-col items-center justify-center text-center">
-                <FiUpload className="w-10 h-10 text-gray-500 mb-3" />
-                <p className="text-gray-600 font-medium">Drag and drop a file here, or click to select.</p>
-                <p className="text-sm text-gray-400 mt-1">Maximum file size depends on server configuration.</p>
+                <div className="flex items-center gap-3 mb-3">
+                  <button type="button" onClick={() => fileInputRef.current?.click()} className="text-blue-600 hover:underline font-medium">Choose File</button>
+                  <FiUpload className="w-10 h-10 text-gray-500" />
+                </div>
+                <p className="text-gray-600 font-medium">Drag and drop a file here</p>
+                <p className="text-sm text-gray-400 mt-1">Maximum file size: 20 MB</p>
             </div>
         )}
       </div>

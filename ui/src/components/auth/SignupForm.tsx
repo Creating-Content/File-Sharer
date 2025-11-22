@@ -9,9 +9,10 @@ import { saveAuthToken } from '@/utils/authUtils';
 interface SignupFormProps {
   onSuccess: (username: string) => void;
   onSwitch: () => void;
+  onHome: () => void;
 }
 
-export default function SignupForm({ onSuccess, onSwitch }: SignupFormProps) {
+export default function SignupForm({ onSuccess, onSwitch, onHome }: SignupFormProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -58,7 +59,7 @@ export default function SignupForm({ onSuccess, onSwitch }: SignupFormProps) {
         <input
           type="text"
           placeholder="Username"
-          className="input-field"
+          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -66,7 +67,7 @@ export default function SignupForm({ onSuccess, onSwitch }: SignupFormProps) {
         <input
           type="password"
           placeholder="Password"
-          className="input-field"
+          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -74,7 +75,7 @@ export default function SignupForm({ onSuccess, onSwitch }: SignupFormProps) {
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button
           type="submit"
-          className="btn-primary w-full"
+          className="btn-primary w-full block"
           disabled={isLoading}
         >
           {isLoading ? 'Registering...' : 'Sign Up'}
@@ -86,6 +87,12 @@ export default function SignupForm({ onSuccess, onSwitch }: SignupFormProps) {
           Login
         </button>
       </p>
+      <button
+        onClick={onHome}
+        className="w-full px-4 py-2 text-gray-600 hover:text-gray-800 font-medium transition-all"
+      >
+        ← Back to Home
+      </button>
     </div>
   );
 }

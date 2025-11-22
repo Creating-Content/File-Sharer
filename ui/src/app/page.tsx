@@ -127,9 +127,9 @@ export default function Home() {
   const renderTabContent = () => {
     switch (activeTab) {
         case 'login':
-            return <LoginForm onSuccess={handleLoginSuccess} onSwitch={() => setActiveTab('signup')} />;
+            return <LoginForm onSuccess={handleLoginSuccess} onSwitch={() => setActiveTab('signup')} onHome={() => setActiveTab('upload')} />;
         case 'signup':
-            return <SignupForm onSuccess={handleLoginSuccess} onSwitch={() => setActiveTab('login')} />;
+            return <SignupForm onSuccess={handleLoginSuccess} onSwitch={() => setActiveTab('login')} onHome={() => setActiveTab('upload')} />;
         case 'profile':
             return <ProfileSection onLogout={handleLogout} />;
         case 'upload':
@@ -278,8 +278,10 @@ export default function Home() {
             </div>
           )}
           
-          <div className="p-8">
-            {renderTabContent()}
+          <div className="p-8 flex justify-center">
+            <div className="w-full max-w-md">
+              {renderTabContent()}
+            </div>
           </div>
         </div>
       </main>
