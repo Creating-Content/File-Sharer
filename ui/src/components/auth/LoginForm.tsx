@@ -41,7 +41,7 @@ export default function LoginForm({ onSuccess, onSwitch, onHome }: LoginFormProp
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-gray-800 text-center">Welcome Back</h2>
+      <h2 className="text-xl font-bold text-gray-800 text-center">Welcome Back</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -62,13 +62,13 @@ export default function LoginForm({ onSuccess, onSwitch, onHome }: LoginFormProp
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button
           type="submit"
-          className="btn-primary w-full block"
+          className="btn-primary w-full block text-base py-2"
           disabled={isLoading}
         >
           {isLoading ? 'Logging In...' : 'Login'}
         </button>
       </form>
-      <p className="text-center text-sm">
+      <p className="text-center text-xs">
         Don't have an account?{' '}
         <button onClick={onSwitch} className="text-blue-600 hover:underline">
           Sign up

@@ -54,7 +54,7 @@ export default function SignupForm({ onSuccess, onSwitch, onHome }: SignupFormPr
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-gray-800 text-center">Create Account</h2>
+      <h2 className="text-xl font-bold text-gray-800 text-center">Create Account</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -75,13 +75,13 @@ export default function SignupForm({ onSuccess, onSwitch, onHome }: SignupFormPr
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button
           type="submit"
-          className="btn-primary w-full block"
+          className="btn-primary w-full block text-base py-2"
           disabled={isLoading}
         >
           {isLoading ? 'Registering...' : 'Sign Up'}
         </button>
       </form>
-      <p className="text-center text-sm">
+      <p className="text-center text-xs">
         Already have an account?{' '}
         <button onClick={onSwitch} className="text-blue-600 hover:underline">
           Login
